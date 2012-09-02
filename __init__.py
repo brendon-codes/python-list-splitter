@@ -19,16 +19,16 @@ def n_chunks(r, n):
     Author: Brendon Crawford
     """
     s = int(math.ceil(float(len(r)) / float(n)))
-    return chunks(r, s)
+    return _chunks(r, s)
 
 
 def chunks_of_n(r, n):
     """
-    Alias for `chunks`
+    Alias for `_chunks`
 
     Author: Brendon Crawford
     """
-    return chunks(r, n)
+    return _chunks(r, n)
 
 
 def _chunks(r, n):
