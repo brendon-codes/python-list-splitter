@@ -16,6 +16,7 @@ def chunks_matrix(r, chunk_size, width):
     """
     return chunks_of_n(chunks_of_n(r, chunk_size), width)
 
+
 def n_chunks(r, n):
     """
     Splits an iterable in n chunks.
