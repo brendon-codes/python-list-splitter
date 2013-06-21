@@ -6,8 +6,6 @@ Goodies for helping with iterables
 
 import math
 from collections import Iterable
-from itertools import izip
-from itertools import chain
 
 
 def chunks_matrix(r, chunk_size, width):
@@ -52,8 +50,8 @@ def _chunks(r, n):
     if isinstance(r, dict):
         keys, vals = zip(*r.iteritems())
         out = (
-            dict((keys[ii], vals[ii]) for ii in xrange(i, i + n) \
-                  if ii < len(r)) \
+            dict((keys[ii], vals[ii]) for ii in xrange(i, i + n)
+                 if ii < len(r))
             for i in xrange(0, len(r), n)
         )
     ##
@@ -66,7 +64,7 @@ def _chunks(r, n):
         out = (r[i:i + n] for i in xrange(0, len(r), n))
     ##
     ## Some other generator that can be converted
-    ## to a lsit
+    ## to a list
     ##
     elif isinstance(r, Iterable):
         ri = list(r)
