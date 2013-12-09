@@ -5,9 +5,8 @@ Goodies for helping with iterables
 """
 
 import math
-from collections import Iterable
 from itertools import izip
-from itertools import chain
+from collections import Iterable
 
 
 def chunks_matrix(r, chunk_size, width):
@@ -50,12 +49,15 @@ def _chunks(r, n):
     ## Dict
     ##
     if isinstance(r, dict):
-        keys, vals = zip(*r.iteritems())
-        out = (
-            dict((keys[ii], vals[ii]) for ii in xrange(i, i + n)
-                 if ii < len(r))
-            for i in xrange(0, len(r), n)
-        )
+        if len(r) == 0:
+            out = iter([])
+        else:
+            keys, vals = izip(*r.iteritems())
+            out = (
+                dict((keys[ii], vals[ii]) for ii in xrange(i, i + n)
+                     if ii < len(r))
+                for i in xrange(0, len(r), n)
+            )
     ##
     ## List or anything that has a length and is sliceable.
     ## This most likely includes a Django QuerySet result
@@ -66,7 +68,7 @@ def _chunks(r, n):
         out = (r[i:i + n] for i in xrange(0, len(r), n))
     ##
     ## Some other generator that can be converted
-    ## to a lsit
+    ## to a list
     ##
     elif isinstance(r, Iterable):
         ri = list(r)
