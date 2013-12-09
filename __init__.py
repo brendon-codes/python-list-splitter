@@ -52,8 +52,8 @@ def _chunks(r, n):
     if isinstance(r, dict):
         keys, vals = zip(*r.iteritems())
         out = (
-            dict((keys[ii], vals[ii]) for ii in xrange(i, i + n) \
-                  if ii < len(r)) \
+            dict((keys[ii], vals[ii]) for ii in xrange(i, i + n)
+                 if ii < len(r))
             for i in xrange(0, len(r), n)
         )
     ##
